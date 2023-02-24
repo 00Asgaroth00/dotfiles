@@ -136,8 +136,20 @@ ex ()
   fi
 }
 
+# Note: Bash on Windows does not currently apply umask properly.
+if [[ "$(umask)" = "0000" ]]; then
+  umask 0022
+fi
+
+# Set custom prompt (and lowercase hostname in-case of WSL environment)
+if [ -t 1 ] ; then
+  export PS1="\[$(tput bold)\]\[$(tput setaf 4)\][\[$(tput setaf 3)\]\u\[$(tput setaf 4)\]@\[$(tput setaf 3)\]${HOSTNAME,,} \[$(tput setaf 2)\]\W\[$(tput setaf 4)\]]\\$ \[$(tput sgr0)\]"
+  # cd ~
+fi
+
 alias ll='ls -la $*'
 alias vi='/usr/bin/nvim $*'
+alias tmux='tmux -2 -u'
 
 # export SSH_AUTH_SOCK="/run/user/$(id -u)/ssh-agent.socket"
 export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"

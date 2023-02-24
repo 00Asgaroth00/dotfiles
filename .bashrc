@@ -138,3 +138,6 @@ ex ()
 
 alias ll='ls -la $*'
 alias vi='/usr/bin/nvim $*'
+
+# export SSH_AUTH_SOCK="/run/user/$(id -u)/ssh-agent.socket"
+export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"

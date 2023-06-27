@@ -152,4 +152,6 @@ alias vi='/usr/bin/nvim $*'
 alias tmux='tmux -2 -u'
 
 # export SSH_AUTH_SOCK="/run/user/$(id -u)/ssh-agent.socket"
-export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+if [[ -f "${XDG_RUNTIME_DIR}/ssh-agent.socket" ]]; then
+  export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
+fi

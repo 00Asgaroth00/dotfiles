@@ -155,3 +155,10 @@ alias tmux='tmux -2 -u'
 if [[ -f "${XDG_RUNTIME_DIR}/ssh-agent.socket" ]]; then
   export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/ssh-agent.socket"
 fi
+
+# Activate direnv hook
+# install on Arch Linux
+#   sudo pacman -S direnv
+if [[ -f /usr/sbin/direnv ]]; then
+	eval "$(direnv hook bash)"
+fi

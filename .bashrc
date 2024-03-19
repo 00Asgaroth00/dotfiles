@@ -162,3 +162,4 @@ fi
 if [[ -f /usr/sbin/direnv ]]; then
 	eval "$(direnv hook bash)"
 fi
+eval "$(direnv hook bash)"

@@ -74,7 +74,7 @@ kernelCommandLine = cgroup_no_v1=all
 # pacman-key --refresh-keys
 # pacman -Sy archlinux-keyring
 # pacman -Syyu
-# pacman -S zsh
+# pacman -S zsh openssh
 # groupadd sudo
 # sed -i.bak -e 's|^# \(%wheel.*NOPASSWD.*\)|\1|g' -e 's|^# \(%sudo.*ALL\)|\1|g' /etc/sudoers
 # useradd -m -G wheel,sudo -s /bin/zsh <username>

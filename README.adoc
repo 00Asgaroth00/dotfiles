@@ -1,0 +1,119 @@
+# dotfiles
+
+dotfiles for use with home directories on Linux or Windows WSL2
+
+## Requirements
+
+### Windows
+
+* Install Scoop inside powershell session
+
+***
+[source, powershell]
+----
+> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+> Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+----
+***
+
+* Install helper tools via scoop in command/powershell prompt
+
+***
+[source, cmd]
+----
+> scoop install curl wget wslinternals
+----
+***
+
+## WSL
+
+* Ensure WSL2 is installed
+
+* Start with basic .wslconfig file, edit/add into %UserProfile/.wslconfig
+
+***
+[source, ini]
+----
+[wsl2]
+memory=8GB
+processors=4
+swap=0
+guiApplications=false
+kernelCommandLine = cgroup_no_v1=all
+# networkingMode = bridged
+# vmSwitch = External-Bridge
+----
+***
+
+* Download wanted rootfs from https://images.linuxcontainers.org/images/[LinuxContainers]
+
+***
+[source, cmd]
+----
+> wget https://images.linuxcontainers.org/images/archlinux/current/amd64/default/20240318_04:18/rootfs.tar.xz -O d:\Temp\archlinux_rootfs.tar.xz
+----
+***
+
+* Import the image into WSL2 environment
+
+***
+[source, cmd]
+----
+> wsl.exe --import ArchTest c:\WSL\ArchTest d:\Temp\archlinux_rootfs.tar.xz
+----
+***
+
+* Start WSL image and configure your user (replace instances of <username> with your username)
+
+***
+[source, cmd]
+----
+> wsl.exe -d ArchTest -u root
+# pacman-key --init
+# pacman-key --populate
+# pacman-key --refresh-keys
+# pacman -Sy archlinux-keyring
+# pacman -Syyu
+# pacman -S zsh
+# groupadd sudo
+# sed -i.bak -e 's|^# \(%wheel.*NOPASSWD.*\)|\1|g' -e 's|^# \(%sudo.*ALL\)|\1|g' /etc/sudoers
+# useradd -m -G wheel,sudo -s /bin/zsh <username>
+# passwd <username>
+# cat << __EOFL__ >> /etc/fstab
+cgroup2 /sys/fs/cgroup cgroup2 rw,nosuid,nodev,noexec,relatime,nsdelegate 0 0
+__EOFL__
+# cat << __EOFL__ > /etc/wsl.conf
+[boot]
+systemd=true
+
+[automount]
+enabled = true
+options = "metadata,umask=0022,fmask=0011,dmask=0022"
+mountFsTab = true
+
+[mount]
+uid = 1000
+gid = 1000
+umask = 0022
+fmask = 0011
+dmask = 0022
+
+[user]
+default = "<username>"
+
+[network]
+hostname = archtest
+generateHosts = true
+generateResolvConf = true
+
+[interop]
+enabled = true
+appendWindowsPath = true
+__EOFL__
+
+# exit
+> wsl --shutdown
+> wsl -d ArchTest --cd ~
+#
+----
+***

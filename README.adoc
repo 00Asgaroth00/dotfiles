@@ -115,5 +115,7 @@ __EOFL__
 > wsl --shutdown
 > wsl -d ArchTest --cd ~
 #
+# sudo pacman -S docker docker-buildx docker-compose
+# sudo systemctl enable docker
 ----
 ***

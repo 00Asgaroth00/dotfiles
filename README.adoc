@@ -119,5 +119,16 @@ __EOFL__
 # sudo systemctl enable docker
 # # sudo pacman -S $(pacman -Sgq nerd-fonts)
 # # sudo pacman -S python python-setuptools python-pip python-pipx python-psutil python-pygit2 python-pynvim neovim powerline powerline-fonts powerline-vim
+# sudo pacman -S nix git neovim
+# sudo usermod -aG nix-users vzhsxn (logout and back in to activate)
+# sudo systemctl enable nix-daemon
+# sudo systemctl start nix-daemon
+# sudo systemctl status nix-daemon
+# nix-channel --add https://nixos.org/channels/nixpkgs-unstable
+# nix-channel --update
+# nix-shell -p home-manager
+[nix-shell] home-manage init
+[nix-shell] home-manager switch # run in directory of flake.nix
+[nix-shell] home-manager switch --flake ~/.config/home-manager/#<username>
 ----
 ***

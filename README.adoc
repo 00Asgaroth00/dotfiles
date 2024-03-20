@@ -74,7 +74,7 @@ kernelCommandLine = cgroup_no_v1=all
 # pacman-key --refresh-keys
 # pacman -Sy archlinux-keyring
 # pacman -Syyu
-# pacman -S zsh openssh
+# pacman -S zsh openssh tmux
 # groupadd sudo
 # sed -i.bak -e 's|^# \(%wheel.*NOPASSWD.*\)|\1|g' -e 's|^# \(%sudo.*ALL\)|\1|g' /etc/sudoers
 # useradd -m -G wheel,sudo -s /bin/zsh <username>
@@ -117,5 +117,7 @@ __EOFL__
 #
 # sudo pacman -S docker docker-buildx docker-compose
 # sudo systemctl enable docker
+# # sudo pacman -S $(pacman -Sgq nerd-fonts)
+# # sudo pacman -S python python-setuptools python-pip python-pipx python-psutil python-pygit2 python-pynvim neovim powerline powerline-fonts powerline-vim
 ----
 ***

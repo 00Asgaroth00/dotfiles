@@ -64,6 +64,8 @@ kernelCommandLine = cgroup_no_v1=all
 ***
 
 * Start WSL image and configure your user (replace instances of <username> with your username)
+ ** > denotes a powershell promp
+ ** # denotes a wsl shell prompt
 
 ***
 [source, cmd]
@@ -74,7 +76,7 @@ kernelCommandLine = cgroup_no_v1=all
 # pacman-key --refresh-keys
 # pacman -Sy archlinux-keyring
 # pacman -Syyu
-# pacman -S zsh openssh tmux
+# pacman -S git zsh neovim
 # groupadd sudo
 # sed -i.bak -e 's|^# \(%wheel.*NOPASSWD.*\)|\1|g' -e 's|^# \(%sudo.*ALL\)|\1|g' /etc/sudoers
 # useradd -m -G wheel,sudo -s /bin/zsh <username>
@@ -114,22 +116,7 @@ __EOFL__
 # exit
 > wsl --shutdown
 > wsl -d ArchTest --cd ~
-#
-# sudo pacman -S docker docker-buildx docker-compose
-# sudo systemctl enable docker
-# # sudo pacman -S $(pacman -Sgq nerd-fonts)
-# # sudo pacman -S python python-setuptools python-pip python-pipx python-psutil python-pygit2 python-pynvim neovim powerline powerline-fonts powerline-vim
-# sudo pacman -S nix git neovim
-# sudo usermod -aG nix-users vzhsxn (logout and back in to activate)
-# sudo systemctl enable nix-daemon
-# sudo systemctl start nix-daemon
-# sudo systemctl status nix-daemon
-# nix-channel --add https://nixos.org/channels/nixpkgs-unstable
-# nix-channel --update
-# nix-shell -p home-manager
-[nix-shell] home-manage init
-[nix-shell] home-manager switch # run in directory of flake.nix
-[nix-shell] home-manager switch --flake ~/.config/home-manager/#<username>
+# git clone https://github.com/00Asgaroth00/dotfiles.git
 ----
 ***
 
@@ -149,20 +136,7 @@ __EOFL__
 ***
 [source]
 ----
-#
-# https://nixos.org/manual/nix/stable/#sec-conf-file
-
-
-# Unix group containing the Nix build user accounts
-build-users-group = nixbld
-
-# Disable sandbox
-# sandbox = false
-
-experimental-features = flakes nix-command
-accept-flake-config = true
-
-auto-optimise-store = true
+# sudo cp ~/dotfiles/etc/nix/nix.conf /etc/nix/nix.conf
 ----
 ***
 
@@ -172,11 +146,17 @@ auto-optimise-store = true
 [source]
 ----
 # sudo mkdir /etc/systemd/system/nix-daemon.service.d
-# sudo cat << __EOFL__ > /etc/systemd/system/nix-daemon.service.d/override.conf
-[Service]
-Environment=TMPDIR=/var/tmp/nix-daemon
-__EOFL__
+# sudo cp ~/dotfiles/etc/systemd/system/nix-daemon.service.d/override.conf /etc/systemd/system/nix-daemon.service.d/.
 # sudo mkdir /var/tmp/nix-daemon
+----
+***
+
+* Add your user to the nix group to use the nix daemon 
+
+***
+[source]
+----
+# sudo usermod -aG nix-users <username>
 ----
 ***
 
@@ -188,5 +168,60 @@ __EOFL__
 # sudo systemctl daemon-reload
 # sudo systemctl restart nix-daemon
 # sudo systemctl status nix-daemon
+# sudo systemctl enable nix-daemon
 ----
 ***
+
+* Logout of WSL environment and log back in to activate group modifications
+
+***
+[source]
+----
+# exit
+> wsl -d ArchTest --cd ~
+----
+***
+
+* Configure the nix packages channel (using the "unstable" branch here)
+
+***
+[source]
+----
+# nix-channel --add https://nixos.org/channels/nixpkgs-unstable
+# nix-channel --update
+----
+***
+
+## Build Home
+
+* Generate home configuration
+
+***
+[source]
+----
+# nix-shell -p home-manager
+[nix-shell] home-manager switch --flake ~/dotfiles/home-manager/#$(id -un)
+[nix-shell] exit
+# exit
+> alacritty --config-file alacritty-archtest.toml
+
+----
+***
+
+## Extras
+
+### Docker
+
+* Install and enable docker daemon
+
+***
+[source]
+----
+# sudo pacman -S docker docker-buildx docker-compose
+# sudo systemctl enable docker
+----
+***
+
+## Troubleshooting
+
+* Intermittently the users run directory */run/user/1000* is not created after the initial start of wsl after the installation/creation of the user process. A stop/start of the wsl environment usually corrects this.

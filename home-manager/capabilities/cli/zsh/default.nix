@@ -19,6 +19,11 @@
     plugins = [
       { name = "fzf-tab"; src = "${pkgs.zsh-fzf-tab}/share/fzf-tab"; }
     ];
+
+    sessionVariables = {
+      COLORTERM = "truecolor";
+    };
+
     # shellGlobalAliases = {
     #   E = "| entr -c";
     #   F = "| fzf";

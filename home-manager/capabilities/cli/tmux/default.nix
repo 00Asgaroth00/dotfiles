@@ -63,7 +63,7 @@ in {
       # Bind Ctl-B Ctl-Y to toggle broadcast to all panes
       bind C-Y set-window-option synchronize-panes
 
-      # Enable yazi image preview to work correctly
+      # Enable yazi image preview to work correctly (currently not working in WSL)
       set -g allow-passthrough on
       set -ga update-environment TERM
       set -ga update-environment TERM_PROGRAM

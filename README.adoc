@@ -132,3 +132,61 @@ __EOFL__
 [nix-shell] home-manager switch --flake ~/.config/home-manager/#<username>
 ----
 ***
+
+### NIX in WSL
+
+* Install nix package manager
+
+***
+[source]
+----
+# sudo pacman -S nix
+----
+***
+
+* Amend the nix main configuration file */etc/nix/nix.conf*
+
+***
+[source]
+----
+#
+# https://nixos.org/manual/nix/stable/#sec-conf-file
+
+
+# Unix group containing the Nix build user accounts
+build-users-group = nixbld
+
+# Disable sandbox
+# sandbox = false
+
+experimental-features = flakes nix-command
+accept-flake-config = true
+
+auto-optimise-store = true
+----
+***
+
+* Specify a temp directory for the nix daemon to use, this is a workaround for when */tmp* is too small and you run out of space when trying to install/build new packages, specify a path with sufficient space.
+
+***
+[source]
+----
+# sudo mkdir /etc/systemd/system/nix-daemon.service.d
+# sudo cat << __EOFL__ > /etc/systemd/system/nix-daemon.service.d/override.conf
+[Service]
+Environment=TMPDIR=/var/tmp/nix-daemon
+__EOFL__
+# sudo mkdir /var/tmp/nix-daemon
+----
+***
+
+* Restart the nix daemon service
+
+***
+[source]
+----
+# sudo systemctl daemon-reload
+# sudo systemctl restart nix-daemon
+# sudo systemctl status nix-daemon
+----
+***

@@ -222,6 +222,22 @@ __EOFL__
 ----
 ***
 
+### GPU Hardware Acceleration
+
+* References
+** Blog: https://devblogs.microsoft.com/commandline/d3d12-gpu-video-acceleration-in-the-windows-subsystem-for-linux-now-available/[D3D12 GPU Video acceleration in the Windows Subsystem for Linux now available!]
+
+* Install mesa libs and drivers
+
+***
+[source]
+----
+# sudo pacman -S mesa libva-mesa-driver libva-utils mesa-utils
+# export LIBVA_DRIVER_NAME=d3d12
+# vainfo --display drm --device /dev/dri/card0
+----
+***
+
 ## Troubleshooting
 
 * Intermittently the users run directory */run/user/1000* is not created after the initial start of wsl after the installation/creation of the user process. A stop/start of the wsl environment usually corrects this.

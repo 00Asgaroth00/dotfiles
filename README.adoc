@@ -226,6 +226,7 @@ __EOFL__
 
 * References
 ** Blog: https://devblogs.microsoft.com/commandline/d3d12-gpu-video-acceleration-in-the-windows-subsystem-for-linux-now-available/[D3D12 GPU Video acceleration in the Windows Subsystem for Linux now available!]
+** Wiki: https://github.com/microsoft/wslg/wiki/GPU-selection-in-WSLg[GPU selection in WSLg]
 
 * Install mesa libs and drivers
 
@@ -235,6 +236,7 @@ __EOFL__
 # sudo pacman -S mesa libva-mesa-driver libva-utils mesa-utils
 # export LIBVA_DRIVER_NAME=d3d12
 # vainfo --display drm --device /dev/dri/card0
+# glxinfo -B
 ----
 ***
 

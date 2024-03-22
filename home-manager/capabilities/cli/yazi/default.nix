@@ -1,13 +1,13 @@
 {lib, pkgs, ...}: {
   home.packages = with pkgs; [
+    exiftool
     file
-    # nerdfonts
     ffmpegthumbnailer
-    ueberzugpp
+    # nerdfonts
+    # ueberzugpp
     # zoxide
     # xclip
     # xsel
-    exiftool
   ];
 
   xdg.configFile."yazi/yazi.toml".source = ./yazi.toml;

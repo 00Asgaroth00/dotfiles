@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+cmd_vlc="$(command -v vlc.exe)"
+cmd_mpv="$(command -v mpv.exe)"
+cmd_mp=""
+
+if [[ -z "${cmd_mpv-}" ]]; then
+  echo "MPV media player not found."
+  if [[ -z "${cmd_vlc-}" ]]; then
+    echo "VLC media player not found."
+    exit 0 # no media player found
+  else
+    cmp_mp="${cmd_vlc}"
+  fi
+else
+  cmd_mp="${cmd_mpv}"
+fi
+
+# convert args to windows paths
+m_args=()
+for arg in "${@}"; do
+  m_args+=("$(wslpath -w "${arg}")")
+done
+
+# echo "cmd_mp: ${cmd_mp}"
+# echo "# m_args: ${#m_args[@]}"
+# for i in "${m_args[@]}"; do
+#   echo "arg: '${i}'"
+# done
+
+${cmd_mp} "${m_args[@]}"

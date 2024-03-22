@@ -53,6 +53,7 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    (writeShellScriptBin "mpv" (builtins.readFile ./scripts/mpv))
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -86,6 +87,7 @@
   #  /etc/profiles/per-user/vzhsxn/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
+    LIBVA_DRIVER_NAME = "d3d12";  # only enable this if you have mesa/libva-mesa-driver installed (wsl gpu hardware acceleration)
     # EDITOR = "emacs";
   };
 

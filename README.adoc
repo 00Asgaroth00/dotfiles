@@ -241,3 +241,13 @@ __EOFL__
 ## Troubleshooting
 
 * Intermittently the users run directory */run/user/1000* is not created after the initial start of wsl after the installation/creation of the user process. A stop/start of the wsl environment usually corrects this.
+* Intermittently the X11 display is not linked correctly when wslg is enabled, we need to recreate the symbolic link
+** A more complete example gist can be seen https://gist.github.com/oleksis/871e185ff85b67e77565a214b163b0f0[here]
+
+
+***
+[source]
+----
+# ln -s /mnt/wslg/.X11-unix/X0 /tmp/.X11-unix/
+----
+***

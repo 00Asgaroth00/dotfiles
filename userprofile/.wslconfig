@@ -1,0 +1,8 @@
+[wsl2]
+memory=8GB
+processors=4
+swap=0
+guiApplications=true
+kernelCommandLine = cgroup_no_v1=all
+networkingMode = bridged
+vmSwitch = External-Bridge

@@ -53,7 +53,11 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    
+    # Helper for yazi spawning media player
     (writeShellScriptBin "mpv" (builtins.readFile ./scripts/mpv))
+    # below is better written with writeShellApplication
+    # (writeShellScriptBin "dtcw" (fetchFromGitHub {owner = "doctoolchain"; repo = "doctoolchain"; rev = "v3.3.1"; sha256 = "sha256-H3NBOvc7d7myV3Bapz9o/IV3tjRXktMqOL9Irll4leY=";} + "/dtcw"))
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

@@ -210,6 +210,17 @@ __EOFL__
 
 ## Extras
 
+### Windows additions
+
+* Common apps I use in windows (some wrapped within yazi)
+
+***
+[source]
+----
+> scoop install mpv vlc irfanview imageglass wezterm alacritty
+----
+***
+
 ### Docker
 
 * Install and enable docker daemon

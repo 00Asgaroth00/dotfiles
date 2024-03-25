@@ -4,6 +4,7 @@
 
   imports = [
     ./capabilities/cli
+    ./capabilities/common/xdg
   ];
 
   fonts.fontconfig.enable = true;

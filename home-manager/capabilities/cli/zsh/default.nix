@@ -36,7 +36,7 @@
       cp = "cp -iv";
       rm = "rm -v";
       v = "nvim";
-      rebuild = "home-manager switch --flake /home/${username}/dotfiles/home-manager/\\#${username}";
+      rebuild = "home-manager switch --flake /home/${username}/dotfiles/home-manager/\\#${username} --show-trace";
       # m = "iex -S mix";
       # ms = "iex -S mix phx.server";
       # mdg = "mix deps.get";

@@ -31,6 +31,8 @@
   # environment.
   home.packages = with pkgs; [
     ouch # archive tool
+    wslu # wsl utilities see https://github.com/wslutilities/wslu
+    handlr-regex # mimetype execuitir see https://github.com/Anomalocaridid/handlr-regex
     # fontconfig
     # nerdfonts
     # noto-fonts

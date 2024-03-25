@@ -29,7 +29,8 @@ edit = [
 	{ run = 'code "%*"',    orphan = true, for = "windows" },
 ]
 open = [
-	{ run = 'xdg-open "$@"',                desc = "Open", for = "linux" },
+	# { run = 'xdg-open "$@"',                desc = "Open", for = "linux" },
+	{ run = 'wslview "$@"',                desc = "Open", for = "linux" },
 	{ run = 'open "$@"',                    desc = "Open", for = "macos" },
 	{ run = 'start "" "%1"', orphan = true, desc = "Open", for = "windows" }
 ]

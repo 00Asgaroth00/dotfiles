@@ -104,6 +104,9 @@
 
     "L+ ${config.home.homeDirectory}/Documents - - - - /mnt/d/SyncThing/Workstation/Documents"
     "L+ ${config.home.homeDirectory}/Downloads - - - - /mnt/d/SyncThing/Downloads"
+    "L+ ${config.home.homeDirectory}/Music - - - - /mnt/d/SyncThing/Music"
+    "L+ ${config.home.homeDirectory}/Pictures - - - - /mnt/d/SyncThing/Photos"
+    "L+ ${config.home.homeDirectory}/Videos - - - - /mnt/d/SyncThing/Video"
   ];
 
   # Let Home Manager install and manage itself.

@@ -102,7 +102,8 @@
     # below should be put in /etc/tmpfiles.d/wslg.conf
     # "L+ /tmp/.X11-unix - - - - /mnt/wslg/.X11-unix"
 
-    "L+ /mnt/d/SyncThing/Workstation/Documents - - - - ${config.home.homeDirectory}/Documents"
+    "L+ ${config.home.homeDirectory}/Documents - - - - /mnt/d/SyncThing/Workstation/Documents"
+    "L+ ${config.home.homeDirectory}/Downloads - - - - /mnt/d/SyncThing/Downloads"
   ];
 
   # Let Home Manager install and manage itself.

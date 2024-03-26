@@ -98,6 +98,13 @@
     # EDITOR = "emacs";
   };
 
+  systemd.user.tmpfiles.rules = [
+    # below should be put in /etc/tmpfiles.d/wslg.conf
+    # "L+ /tmp/.X11-unix - - - - /mnt/wslg/.X11-unix"
+
+    "L+ /mnt/d/SyncThing/Workstation/Documents - - - - ${config.home.homeDirectory}/Documents"
+  ];
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 }

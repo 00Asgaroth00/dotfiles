@@ -6,10 +6,12 @@
     ./eza
     ./fzf
     ./git
+    ./gpg
     ./k8s_tools
     ./k9s
     ./neovim
     ./nnn
+    ./ssh
     ./starship
     ./tmux
     ./yazi

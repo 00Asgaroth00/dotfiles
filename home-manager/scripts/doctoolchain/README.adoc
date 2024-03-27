@@ -1,0 +1,3 @@
+# Doctoolchain Wrapper scripts
+
+Because I have not quite yet figered out how to download from github (fetchFromGitHub) the dtcw version required and build a shell script (writeShellScript/writeShellScriptBin/writeShellApplication) within nix without spawning two bash shells when executing it, I am currently manually downloading the versions into this directory then removing the shebang line which writeShellScriptBin will automagically put in for you.

@@ -1,6 +1,6 @@
-{ config, pkgs, username, ... }:
-
-{
+{ config, lib, pkgs, username, ... }: let
+  dtcwVersion = "3.3.1";
+in {
 
   imports = [
     ./capabilities/cli
@@ -61,6 +61,7 @@
     
     # Helper for yazi spawning media player
     (writeShellScriptBin "mpv" (builtins.readFile ./scripts/mpv))
+    (writeShellScriptBin "dtcw" (builtins.readFile ./scripts/doctoolchain/dtcw-v${dtcwVersion}))
     # below is better written with writeShellApplication
     # (writeShellScriptBin "dtcw" (fetchFromGitHub {owner = "doctoolchain"; repo = "doctoolchain"; rev = "v3.3.1"; sha256 = "sha256-H3NBOvc7d7myV3Bapz9o/IV3tjRXktMqOL9Irll4leY=";} + "/dtcw"))
   ];

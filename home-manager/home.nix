@@ -30,6 +30,8 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    wget
+    curl
     ouch # archive tool
     wslu # wsl utilities see https://github.com/wslutilities/wslu
     handlr-regex # mimetype execuitir see https://github.com/Anomalocaridid/handlr-regex

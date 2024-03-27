@@ -221,6 +221,58 @@ __EOFL__
 ----
 ***
 
+* Setup ssh-agent forwarding between keepassxc/windows ssh-agent/wsl
+
+** Install needed tools
+
+***
+[source]
+----
+> scoop install npiperelay
+----
+***
+
+** Upgrade OpenSSH server on windows (Elevated command prompt)
+*** Reference: https://superuser.com/questions/1726204/get-agent-identities-ssh-agent-bind-hostkey-communication-with-agent-failed/1744159#1744159[SSH agent communication error with ssh-agent]
+
+***
+[source]
+----
+> Remove-WindowsCapability -Online -Name OpenSSH.Client~~~~0.0.1.0
+## REBOOT HERE
+> Get-WindowsCapability -Online | Where-Object Name -like 'OpenSSH*'
+> winget install Microsoft.OpenSSH.Beta --override ADDLOCAL=Client
+> Start-Service ssh-agent
+> Set-Service ssh-agent -StartupType Automatic
+> Get-Service ssh-agent
+----
+
+** In WSL setup and forward between pipes
+*** TODO: Put this in the nix configuration to automate this step
+*** Reference: https://code.mendhak.com/wsl2-keepassxc-ssh/[How to use KeepassXC to serve SSH keys to WSL2]
+*** Reference: https://github.com/keepassxreboot/keepassxc/issues/9585[SSH Agent support in WSL]
+
+***
+[source]
+----
+# rm $SSH_AUTH_SOCK
+# (setsid socat UNIX-LISTEN:$SSH_AUTH_SOCK,fork EXEC:"npiperelay.exe -ei -s //./pipe/openssh-ssh-agent",nofork &)
+----
+***
+
+* In windows enable the ssh agent in KeypassXC and load your keys.
+
+* In WSL see if you can see the keys being presented to the agent
+
+***
+[source]
+----
+# ssh-add -L
+----
+***
+
+***
+
 ### Docker
 
 * Install and enable docker daemon

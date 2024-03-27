@@ -6,7 +6,7 @@
     ./eza
     ./fzf
     ./git
-    ./gpg
+    # ./gpg
     ./k8s_tools
     ./k9s
     ./neovim

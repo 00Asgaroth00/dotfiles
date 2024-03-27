@@ -110,6 +110,7 @@ in {
     "L+ ${config.home.homeDirectory}/Music - - - - /mnt/d/SyncThing/Music"
     "L+ ${config.home.homeDirectory}/Pictures - - - - /mnt/d/SyncThing/Photos"
     "L+ ${config.home.homeDirectory}/Videos - - - - /mnt/d/SyncThing/Video"
+    "L+ ${config.home.homeDirectory}/Work - - - - /mnt/d/SyncThing/Work"
   ];
 
   # Let Home Manager install and manage itself.

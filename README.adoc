@@ -282,6 +282,7 @@ __EOFL__
 ----
 # sudo pacman -S docker docker-buildx docker-compose
 # sudo systemctl enable docker
+# sudo usermod -aG docker <username>
 ----
 ***
 
@@ -297,6 +298,7 @@ __EOFL__
 [source]
 ----
 # sudo pacman -S mesa libva-mesa-driver libva-utils mesa-utils
+# sudo usermod -aG video <username>
 # export LIBVA_DRIVER_NAME=d3d12
 # vainfo --display drm --device /dev/dri/card0
 # glxinfo -B

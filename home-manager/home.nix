@@ -35,6 +35,7 @@ in {
     ouch # archive tool
     wslu # wsl utilities see https://github.com/wslutilities/wslu
     handlr-regex # mimetype execuitir see https://github.com/Anomalocaridid/handlr-regex
+    yt-dlp
     # fontconfig
     # nerdfonts
     # noto-fonts

@@ -9,7 +9,7 @@ end
 -- change config now
 
 local mouse_bindings = {}
--- local launch_menu = {}
+local launch_menu = {}
 
 config.default_domain = 'WSL: ArchLinux (NIX Home Manager)'
 
@@ -30,27 +30,33 @@ config.wsl_domains = {
   },
 }
 
--- -- Launcher Menu
--- if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
---   --- Grab the ver info for later use.
---   local success, stdout, stderr = wezterm.run_child_process { 'cmd.exe', 'ver' }
---   local major, minor, build, rev = stdout:match("Version ([0-9]+)%.([0-9]+)%.([0-9]+)%.([0-9]+)")
---   local is_windows_11 = tonumber(build) >= 22000
---   
---   --- Make it look cool.
---   if is_windows_11 then
---     wezterm.log_info "We're running Windows 11!"
---   end
--- 
---   table.insert(launch_menu, {
---     label = 'PowerShell',
---     args = { 'powershell.exe', '-NoLogo' },
---   })
+-- Launcher Menu
+if wezterm.target_triple == 'x86_64-pc-windows-msvc' then
+  --- Grab the ver info for later use.
+  local success, stdout, stderr = wezterm.run_child_process { 'cmd.exe', 'ver' }
+  local major, minor, build, rev = stdout:match("Version ([0-9]+)%.([0-9]+)%.([0-9]+)%.([0-9]+)")
+  local is_windows_11 = tonumber(build) >= 22000
+  
+  --- Make it look cool.
+  if is_windows_11 then
+    wezterm.log_info "We're running Windows 11!"
+  end
+
+  table.insert(launch_menu, {
+    label = 'PowerShell',
+	domain = { DomainName = "local" },
+    args = { 'powershell.exe', '-nologo' },
+  })
+  table.insert(launch_menu, {
+    label = 'Command Prompt',
+	domain = { DomainName = "local" },
+    args = { 'cmd.exe' },
+  })
 --   table.insert(launch_menu, {
 --     label = 'PowerShell No Profile',
 --     args = { 'powershell.exe', '-NoLogo', '-NoProfile' },
 --   })
--- end
+end
 
 -- Mousing bindings
 mouse_bindings = {
@@ -95,7 +101,7 @@ config.font = wezterm.font_with_fallback {
 -- config.font = wezterm.font 'JetBrains Mono'
 config.font_size = 9
 config.color_scheme = 'Tokyo Night'
--- config.launch_menu = launch_menu
+config.launch_menu = launch_menu
 config.mouse_bindings = mouse_bindings
 
 return config

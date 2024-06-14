@@ -7,6 +7,68 @@
   programs.ssh = {
     enable = true;
     package = pkgs.openssh;
+    matchBlocks = {
+      bfiemgmt01 = {
+        hostname = "bfiemgmt01.prod.blueface.com";
+	port = 22;
+	user = "vzhsxn";
+	extraOptions = {
+	  HostkeyAlgorithms = "+ssh-rsa";
+	  PubkeyAcceptedKeyTypes = "+ssh-rsa";
+	  KexAlgorithms = "+diffie-hellman-group1-sha1";
+	};
+      };
+      bfiemgmt02 = {
+        hostname = "bfiemgmt02.prod.blueface.com";
+	port = 22;
+	user = "vzhsxn";
+	extraOptions = {
+	  HostkeyAlgorithms = "+ssh-rsa";
+	  PubkeyAcceptedKeyTypes = "+ssh-rsa";
+	  KexAlgorithms = "+diffie-hellman-group1-sha1";
+	};
+      };
+      bfiesbc01 = {
+        hostname = "bfiesbc01.prod.blueface.com";
+	port = 22;
+	user = "vzhsxn";
+	extraOptions = {
+	  HostkeyAlgorithms = "+ssh-rsa";
+	  PubkeyAcceptedKeyTypes = "+ssh-rsa";
+	  KexAlgorithms = "+diffie-hellman-group1-sha1";
+	};
+      };
+      bfiesbc02 = {
+        hostname = "bfiesbc02.prod.blueface.com";
+	port = 22;
+	user = "vzhsxn";
+	extraOptions = {
+	  HostkeyAlgorithms = "+ssh-rsa";
+	  PubkeyAcceptedKeyTypes = "+ssh-rsa";
+	  KexAlgorithms = "+diffie-hellman-group1-sha1";
+	};
+      };
+      bfielb01 = {
+        hostname = "bfielb01.prod.blueface.com";
+	port = 22;
+	user = "vzhsxn";
+	extraOptions = {
+	  HostkeyAlgorithms = "+ssh-rsa";
+	  PubkeyAcceptedKeyTypes = "+ssh-rsa";
+	  KexAlgorithms = "+diffie-hellman-group1-sha1";
+	};
+      };
+      bfielb02 = {
+        hostname = "bfielb02.prod.blueface.com";
+	port = 22;
+	user = "vzhsxn";
+	extraOptions = {
+	  HostkeyAlgorithms = "+ssh-rsa";
+	  PubkeyAcceptedKeyTypes = "+ssh-rsa";
+	  KexAlgorithms = "+diffie-hellman-group1-sha1";
+	};
+      };
+    };
   };
 
   services.ssh-agent.enable = true;

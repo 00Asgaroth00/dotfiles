@@ -68,6 +68,26 @@
 	  KexAlgorithms = "+diffie-hellman-group1-sha1";
 	};
       };
+      gcems1 = {
+        hostname = "gcems1.prod.blueface.com";
+	port = 22;
+	user = "vzhsxn";
+	extraOptions = {
+	  HostkeyAlgorithms = "+ssh-rsa";
+	  PubkeyAcceptedKeyTypes = "+ssh-rsa";
+	  KexAlgorithms = "+diffie-hellman-group1-sha1";
+	};
+      };
+      gcems2 = {
+        hostname = "gcems2.prod.blueface.com";
+	port = 22;
+	user = "vzhsxn";
+	extraOptions = {
+	  HostkeyAlgorithms = "+ssh-rsa";
+	  PubkeyAcceptedKeyTypes = "+ssh-rsa";
+	  KexAlgorithms = "+diffie-hellman-group1-sha1";
+	};
+      };
     };
   };
 

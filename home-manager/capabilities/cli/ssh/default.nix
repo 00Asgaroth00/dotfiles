@@ -7,6 +7,7 @@
   programs.ssh = {
     enable = true;
     package = pkgs.openssh;
+    serverAliveInterval = 10;
     matchBlocks = {
       bfiemgmt01 = {
         hostname = "bfiemgmt01.prod.blueface.com";
@@ -86,6 +87,33 @@
 	  HostkeyAlgorithms = "+ssh-rsa";
 	  PubkeyAcceptedKeyTypes = "+ssh-rsa";
 	  KexAlgorithms = "+diffie-hellman-group1-sha1";
+	};
+      };
+      bfieesx10 = {
+        hostname = "bfieesx10.cons.blueface.com";
+	port = 22;
+	user = "root";
+	extraOptions = {
+	  HostkeyAlgorithms = "+ssh-rsa";
+	  PubkeyAcceptedKeyTypes = "+ssh-rsa";
+	};
+      };
+      bfieesx11 = {
+        hostname = "bfieesx11.cons.blueface.com";
+	port = 22;
+	user = "root";
+	extraOptions = {
+	  HostkeyAlgorithms = "+ssh-rsa";
+	  PubkeyAcceptedKeyTypes = "+ssh-rsa";
+	};
+      };
+      bfieesx12 = {
+        hostname = "bfieesx12.cons.blueface.com";
+	port = 22;
+	user = "root";
+	extraOptions = {
+	  HostkeyAlgorithms = "+ssh-rsa";
+	  PubkeyAcceptedKeyTypes = "+ssh-rsa";
 	};
       };
     };

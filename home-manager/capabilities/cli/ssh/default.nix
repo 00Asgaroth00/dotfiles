@@ -89,6 +89,16 @@
 	  KexAlgorithms = "+diffie-hellman-group1-sha1";
 	};
       };
+      bfievklb07 = {
+        hostname = "bfievklb07.prod.blueface.com";
+	port = 22;
+	user = "vzhsxn";
+	extraOptions = {
+	  HostkeyAlgorithms = "+ssh-rsa";
+	  PubkeyAcceptedKeyTypes = "+ssh-rsa";
+	  KexAlgorithms = "+diffie-hellman-group1-sha1";
+	};
+      };
       bfieesx10 = {
         hostname = "bfieesx10.cons.blueface.com";
 	port = 22;

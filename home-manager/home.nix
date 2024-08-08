@@ -1,5 +1,5 @@
 { config, lib, pkgs, username, ... }: let
-  dtcwVersion = "3.3.1";
+  dtcwVersion = "3.4.0";
 in {
 
   imports = [
@@ -37,6 +37,8 @@ in {
     handlr-regex # mimetype execuitir see https://github.com/Anomalocaridid/handlr-regex
     yt-dlp
     pwgen # tool for generating passwords
+    rsync
+    lftp
     # fontconfig
     # nerdfonts
     # noto-fonts

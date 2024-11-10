@@ -17,7 +17,8 @@
       owner = "aristocratos";
       repo = "btop";
       rev = "master";
-      sha256 = "sha256-XagMW45T8gHb2dfHbyXidPgQGg96wq9kko5rosCXijg=";
+      sha256 = "sha256-zvDwuTKH2/wdgqp2JPc01VCqWtA67fdj1OVqwGri+JU=";
+      #sha256 = "sha256-XagMW45T8gHb2dfHbyXidPgQGg96wq9kko5rosCXijg=";
     }
     + "/themes/tokyo-night.theme";
 }

@@ -18,7 +18,8 @@
         owner = "jarun";
         repo = "nnn";
         rev = "master";
-        sha256 = "sha256-1AgOzmnEPnycYf/YbPvcHV1O+vGlcddHCoIkgpbcbv0=";
+        sha256 = "sha256-jziENmyN4OcyWBM2vx2PhpS07QFbkm9J3sn5rer8z64=";
+        # sha256 = "sha256-1AgOzmnEPnycYf/YbPvcHV1O+vGlcddHCoIkgpbcbv0=";
       }) + "/plugins";
     };
   };

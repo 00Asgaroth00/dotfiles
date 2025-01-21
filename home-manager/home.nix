@@ -1,5 +1,5 @@
 { config, lib, pkgs, username, ... }: let
-  dtcwVersion = "3.4.0";
+  dtcwVersion = "3.4.1";
 in {
 
   imports = [

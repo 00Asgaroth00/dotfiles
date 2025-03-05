@@ -318,3 +318,12 @@ __EOFL__
 # ln -s /mnt/wslg/.X11-unix/X0 /tmp/.X11-unix/
 ----
 ***
+
+* Nix garbage collection should be periodically run, look into setting up a systemd timer for this, NixOS has gc options in its configuration manager but the nix app with home manager does not.
+
+***
+[source]
+---
+# nix-collect-garbage --delete-older-than 30d
+---
+***

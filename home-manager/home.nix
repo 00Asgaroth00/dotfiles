@@ -39,6 +39,7 @@ in {
     pwgen # tool for generating passwords
     rsync
     lftp
+    p7zip
     # fontconfig
     # nerdfonts
     # noto-fonts
